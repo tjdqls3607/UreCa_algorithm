@@ -27,16 +27,26 @@ public class BufferedReaderTest {
 //        }
 
         // 1 A 3 B 5
+//        {
+//            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//            String str = br.readLine(); // 1 A 3 B 5
+//
+//            char[] input = new char[5];
+//            StringTokenizer st = new StringTokenizer(str);
+//
+//            for (int i = 0; i < 5; i++) {
+//                input[i] = st.nextToken().charAt(0);
+//            }
+//
+//            System.out.println(Arrays.toString(input));
+//        }
+
+        // ABCDE
         {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String str = br.readLine(); // 1 A 3 B 5
+            String str = br.readLine(); // ABCDE
 
-            char[] input = new char[5];
-            StringTokenizer st = new StringTokenizer(str);
-
-            for (int i = 0; i < 5; i++) {
-                input[i] = st.nextToken().charAt(0);
-            }
+            char[] input = str.toCharArray();
 
             System.out.println(Arrays.toString(input));
         }
