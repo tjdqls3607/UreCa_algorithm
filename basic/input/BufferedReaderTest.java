@@ -146,4 +146,10 @@ public class BufferedReaderTest {
             }
         }
     }
+    // 출력에 대한 자료 구조
+    // 입력 자료 >>>> 출력 자료
+    // 출력 자료구조가 간단한 정수정도면 별도의 자료 구조 X
+    // 출력이 문지열이고 크다 + 계속 증가한다.
+    // -BufferedWriter : 코드가 길다.
+    // -StringBuilder : 코드가 짧다.
 }
