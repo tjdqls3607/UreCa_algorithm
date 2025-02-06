@@ -21,13 +21,24 @@ public class ScannerTest {
 //        }
 
         // 1 A 2 B C
+//        {
+//            Scanner sc = new Scanner(System.in);
+//            char[] input = new char[5];
+//
+//            for (int i = 0; i < 5; i++) {
+//                input[i] = sc.next().charAt(0); // "1" -> char '1'
+//            }
+//            System.out.println(Arrays.toString(input));
+//        }
+
+        // ABCDE <= 연속된 문자
         {
             Scanner sc = new Scanner(System.in);
-            char[] input = new char[5];
+            //char[] input = new char[5];   //붕필요한 garbage 생산
+            char[] input;
+            // 한 줄 전체를 읽는다. 읽은 문자열을 char 배열로 변환
+            input = sc.nextLine().toCharArray();
 
-            for (int i = 0; i < 5; i++) {
-                input[i] = sc.next().charAt(0); // "1" -> char '1'
-            }
             System.out.println(Arrays.toString(input));
         }
     }
