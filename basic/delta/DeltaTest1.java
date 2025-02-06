@@ -39,6 +39,9 @@ public class DeltaTest1 {
             int ny = y + dy[d];
             int nx = x + dx[d];
 
+            // 새로운 좌표 ny, nx 는 배열의 범위를 벗어날 수 있다. 이에 대한 장치 필요
+            if (nx < 0 || ny < 0 || nx >= 5 || ny >= 5) continue; //범위를 벗어난 좌표는 무시
+
             System.out.println(map[ny][nx]);
         }
 
