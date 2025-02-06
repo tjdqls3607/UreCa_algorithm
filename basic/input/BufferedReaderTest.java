@@ -42,12 +42,30 @@ public class BufferedReaderTest {
 //        }
 
         // ABCDE
+//        {
+//            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//            String str = br.readLine(); // ABCDE
+//
+//            char[] input = str.toCharArray();
+//
+//            System.out.println(Arrays.toString(input));
+//        }
+        /*
+        5
+        1 2 3 4 5
+         */
         {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String str = br.readLine(); // ABCDE
+            int N = Integer.parseInt(br.readLine());
+            int [] input = new int[N];
 
-            char[] input = str.toCharArray();
+            String str = br.readLine();
+            StringTokenizer st = new StringTokenizer(str);
 
+            for (int i = 0; i < N; i++) {
+                input[i] = Integer.parseInt(st.nextToken());
+            }
+            System.out.println(N);
             System.out.println(Arrays.toString(input));
         }
     }
