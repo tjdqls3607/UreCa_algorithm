@@ -36,5 +36,29 @@ public class Array1 {
 
             System.out.println(wrongCnt);
         }
+
+        // #3. 문자열에 포함된 알파벳의 빈도수 출력, 0인 항목도 출력
+        {
+            String str = "abbcccddddeeeeeffffggghhiabbcccddddeeeeeffffggghhi";
+
+            // 모든 알파벳 소문자가 몇번 반복되었는지 출력
+            // a : 4
+            // b : 2
+            // ....
+
+            // 빈도수 관리 배열
+            int[] alphaCnt = new int[26];   //해당 알파벳 - 'a'
+            // 문자열을 char 배열로 변경 가능. String.charAt() 이용
+            int strlen = str.length();
+            for (int i = 0; i < strlen; i++) {
+                alphaCnt[str.charAt(i) - 'a']++;
+            }
+
+            //출력
+            for (int i = 0; i < 26; i++) {
+                System.out.println((char)(i + 'a') + ":" +alphaCnt[i]);
+            }
+
+        }
     }
 }
