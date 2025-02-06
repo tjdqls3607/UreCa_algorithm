@@ -16,14 +16,24 @@ public class Star2 {
 //                    System.out.print("*");
 //                }
 //            }
-            // #2
-            for (int j=0; j < 7 - spaceCnt; j++) {   // 열
-                if ( j < spaceCnt) {    // 앞 쪽 공백
-                    System.out.print(" ");
-                }else{     // 뒤 쪽 공백을 고려하지 않고 * 출력
-                    System.out.print("*");
-                }
+            // #2 뒤 쪽 공백 자리는 따질 핋요 X
+//            for (int j=0; j < 7 - spaceCnt; j++) {   // 열
+//                if ( j < spaceCnt) {    // 앞 쪽 공백
+//                    System.out.print(" ");
+//                }else{     // 뒤 쪽 공백을 고려하지 않고 * 출력
+//                    System.out.print("*");
+//                }
+//            }
+
+            // #3 if-else 제거
+            // spaceCnt 를 이용해서 공백, * 각각 출력
+            for (int j=0; j < spaceCnt; j++) {
+                System.out.print(" ");
             }
+            for (int j=spaceCnt; j < 7-spaceCnt; j++) {
+                System.out.print("*");
+            }
+
             // 개행
             System.out.println();
 
