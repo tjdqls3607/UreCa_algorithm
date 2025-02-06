@@ -9,10 +9,18 @@ public class Star2 {
         for (int i = 0; i < 7; i++) {   // 행
 
             // #1
-            for (int j=0; j < 7; j++) {   // 열
+//            for (int j=0; j < 7; j++) {   // 열
+//                if ( j < spaceCnt) {    // 앞 쪽 공백
+//                    System.out.print(" ");
+//                }else if (j < 7 - spaceCnt){     // 뒤 쪽 공백을 고려한 * 출력 (공백만큼 빼고 출력)
+//                    System.out.print("*");
+//                }
+//            }
+            // #2
+            for (int j=0; j < 7 - spaceCnt; j++) {   // 열
                 if ( j < spaceCnt) {    // 앞 쪽 공백
                     System.out.print(" ");
-                }else if (j < 7 - spaceCnt){     // 뒤 쪽 공백을 고려한 * 출력 (공백만큼 빼고 출력)
+                }else{     // 뒤 쪽 공백을 고려하지 않고 * 출력
                     System.out.print("*");
                 }
             }
