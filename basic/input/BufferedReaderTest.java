@@ -89,22 +89,54 @@ public class BufferedReaderTest {
 1 2 3 4 5
  */
         // 첫 라인에서 읽은 N 만큼 가로 세로가 N인 2차원 배열
+//        {
+//            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//            int N = Integer.parseInt(br.readLine());
+//
+//            int[][] input = new int[N][N];
+//
+//            for (int i = 0; i < N; i++) {
+//                String str = br.readLine();
+//                StringTokenizer st = new StringTokenizer(str);
+//                for (int j = 0; j < N; j++) {
+//                    input[i][j] = Integer.parseInt(st.nextToken());
+//                }
+//            }
+//            System.out.println(N);
+//            for (int i = 0; i < N; i++) {
+//                for (int j = 0; j < N; j++) {
+//                    System.out.print(input[i][j] + " ");
+//                }
+//                System.out.println();
+//            }
+//            for (int i = 0; i < N; i++) {
+//                System.out.println(Arrays.toString(input[i]));
+//            }
+//        }
+/*
+3 5
+1 2 3 4 5
+6 7 8 9 0
+1 2 3 4 5
+*/
         {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            int N = Integer.parseInt(br.readLine());
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
 
-            int[][] input = new int[N][N];
+            int[][] input = new int[N][M];
 
             for (int i = 0; i < N; i++) {
                 String str = br.readLine();
-                StringTokenizer st = new StringTokenizer(str);
-                for (int j = 0; j < N; j++) {
+                st = new StringTokenizer(str);
+                for (int j = 0; j < M; j++) {
                     input[i][j] = Integer.parseInt(st.nextToken());
                 }
             }
             System.out.println(N);
             for (int i = 0; i < N; i++) {
-                for (int j = 0; j < N; j++) {
+                for (int j = 0; j < M; j++) {
                     System.out.print(input[i][j] + " ");
                 }
                 System.out.println();
