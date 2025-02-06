@@ -45,14 +45,29 @@ public class ScannerTest {
 5
 1 2 3 4 5
  */
+//        {
+//            Scanner sc = new Scanner(System.in);
+//           int N = sc.nextInt();
+//           int[] input = new int[N];    //위에 읽은 수만큼 배열 생성
+//
+//            for(int i = 0; i < N; i++){
+//                input[i] = sc.nextInt();
+//            }
+//            System.out.println(N);
+//            System.out.println(Arrays.toString(input));
+//        }
+/*
+5 [개행]
+ABCDE
+ */
+        // next(), nextInt() 는 개행문자를 포함하지 않는다
+        // nextLine() 은 개행문자를 만나면 읽는 처리는 종료
         {
             Scanner sc = new Scanner(System.in);
-           int N = sc.nextInt();
-           int[] input = new int[N];    //위에 읽은 수만큼 배열 생성
+            int N = sc.nextInt();
+            sc.nextLine(); // 5 뒤의 개행 처리
+            char[] input = sc.nextLine().toCharArray();
 
-            for(int i = 0; i < N; i++){
-                input[i] = sc.nextInt();
-            }
             System.out.println(N);
             System.out.println(Arrays.toString(input));
         }
