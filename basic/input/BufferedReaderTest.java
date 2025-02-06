@@ -54,19 +54,64 @@ public class BufferedReaderTest {
         5
         1 2 3 4 5
          */
+//        {
+//            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//            int N = Integer.parseInt(br.readLine());
+//            int [] input = new int[N];
+//
+//            String str = br.readLine();
+//            StringTokenizer st = new StringTokenizer(str);
+//
+//            for (int i = 0; i < N; i++) {
+//                input[i] = Integer.parseInt(st.nextToken());
+//            }
+//            System.out.println(N);
+//            System.out.println(Arrays.toString(input));
+//        }
+        /*
+        5
+        ABCDE
+         */
+//        {
+//            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//            int N = Integer.parseInt(br.readLine());
+//            char[] input = br.readLine().toCharArray();
+//
+//            System.out.println(N);
+//            System.out.println(Arrays.toString(input));
+//        }
+/*
+5
+1 2 3 4 5
+6 7 8 9 0
+1 2 3 4 5
+6 7 8 9 0
+1 2 3 4 5
+ */
+        // 첫 라인에서 읽은 N 만큼 가로 세로가 N인 2차원 배열
         {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             int N = Integer.parseInt(br.readLine());
-            int [] input = new int[N];
 
-            String str = br.readLine();
-            StringTokenizer st = new StringTokenizer(str);
+            int[][] input = new int[N][N];
 
             for (int i = 0; i < N; i++) {
-                input[i] = Integer.parseInt(st.nextToken());
+                String str = br.readLine();
+                StringTokenizer st = new StringTokenizer(str);
+                for (int j = 0; j < N; j++) {
+                    input[i][j] = Integer.parseInt(st.nextToken());
+                }
             }
             System.out.println(N);
-            System.out.println(Arrays.toString(input));
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    System.out.print(input[i][j] + " ");
+                }
+                System.out.println();
+            }
+            for (int i = 0; i < N; i++) {
+                System.out.println(Arrays.toString(input[i]));
+            }
         }
     }
 }
