@@ -62,9 +62,15 @@ public class Test {
 
         System.out.println("앞 m4() " + m4_cnt);
 
-        m4_cnt--;
-        m4(m4_cnt);
-        m4_cnt++;   // 이 코드가 없으면 static 변수 m3_cnt가 0으로 감소한 후 계속 0 으로 유지, 원상복구가 필요함
+//        m4_cnt--;
+//        m4(m4_cnt);
+//        m4_cnt++;   // 이 코드가 없으면 static 변수 m3_cnt가 0으로 감소한 후 계속 0 으로 유지, 원상복구가 필요함
+
+//        m4(m4_cnt - 1); // 호출 시 전달받은 m4_cnt는 변화 X
+//        m4(m4_cnt--);   // 5 가 전달 -> 스택 오버 플로우 발생
+        m4(--m4_cnt);   //호출 시 전달받은     m4_cnt가 1 감소
+        m4_cnt++;   // 원복 필요
+
 
         System.out.println("뒤 m4() " + m4_cnt);
 
