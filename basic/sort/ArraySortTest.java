@@ -21,7 +21,7 @@ public class ArraySortTest {
 //        System.out.println(Arrays.toString(strArray));
 
         // 사용자 정의 클래스
-        Item[] itemArray = {new Item(3, "66"), new Item(2, "77"), new Item(5, "44"), new Item(8, "11")};
+        Item[] itemArray = {new Item(3, "66"), new Item(2, "77"), new Item(2, "44"), new Item(8, "11")};
         Arrays.sort(itemArray);
         System.out.println(Arrays.toString(itemArray));
     }
@@ -45,8 +45,9 @@ public class ArraySortTest {
         public int compareTo(Item o) {  // 정렬 기준 제공
 //            return o.itemId - this.itemId;  // natural ordering
 //            return this.itemId - o.itemId;  // natural ordering
-            return  this.itemName.compareTo(o.itemName);
+//            return this.itemName.compareTo(o.itemName);
             // itemId 우선 비교 두개가 같으면 itemName 으로 비교하도록
+            return this.itemId == o.itemId ? this.itemName.compareTo(o.itemName) : this.itemId - o.itemId;
         }
     }
 }
