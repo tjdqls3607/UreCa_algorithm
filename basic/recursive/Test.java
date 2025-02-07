@@ -5,7 +5,8 @@ public class Test {
 //        m1();
 //        m1_param(0);
 //        m2();
-        m3();
+//        m3();
+        m4(5);  //반복횟수 5 전달
     }
 
     //// 변수
@@ -52,6 +53,20 @@ public class Test {
         m3_cnt++;   // 이 코드가 없으면 static 변수 m3_cnt가 0으로 감소한 후 계속 0 으로 유지, 원상복구가 필요함
 
         System.out.println("뒤 m3() " + m3_cnt);
+
+    }
+
+    static void m4(int m4_cnt) {
+        // 기저조건
+        if (m4_cnt == 0) return;
+
+        System.out.println("앞 m4() " + m4_cnt);
+
+        m4_cnt--;
+        m4(m4_cnt);
+        m4_cnt++;   // 이 코드가 없으면 static 변수 m3_cnt가 0으로 감소한 후 계속 0 으로 유지, 원상복구가 필요함
+
+        System.out.println("뒤 m4() " + m4_cnt);
 
     }
 }
