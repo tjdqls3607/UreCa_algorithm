@@ -4,8 +4,11 @@ package basic.recursive;
 public class Test2 {
     public static void main(String[] args) {
         factorial(5);
+
         int result = factorial2(5);
         System.out.println(result);
+
+        factorial3(5, 1);   // 두 번째 파라미터 값에 누적 곱으로 처리
     }
 
     // #1. 결과값을 static 변수
@@ -31,5 +34,18 @@ public class Test2 {
         // n == 3 일 때
         // 2 X 1의 결과에 자신 3을 곱해서 4에게 리턴
         return n*factorial2(n-1);
+    }
+
+    //#3. 결과값을 재귀호출의 parameter 값으로
+    static void factorial3(int n, int result){
+        // 기저조건
+        if(n==1) {
+            // 이미 result에 이전 계산값이 존재
+            System.out.println(result);
+            return;
+        }
+
+        factorial3(n - 1, result * n ); // 넘어온 이전 계산 값에 자신을 곱한다.
+
     }
 }
