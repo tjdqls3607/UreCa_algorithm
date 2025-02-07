@@ -1,5 +1,6 @@
 package baekjoon;
 
+
 import java.util.Scanner;
 
 public class main {
@@ -8,8 +9,12 @@ public class main {
         int n = sc.nextInt();
         sc.close();
 
-        int[] arr = new int[n]; // 입력값 크기의 배열 생성
-
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i <= n; i++) {
+            sb.append(i);
         }
+        System.out.println(sb.length());
+
+    }
 }
 
