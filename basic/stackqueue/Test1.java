@@ -23,5 +23,9 @@ public class Test1 {
         System.out.println(num);
         System.out.println(stack.peek());
         System.out.println(stack.size());
+
+        while (!stack.isEmpty()) {
+        System.out.print(stack.pop() + " ");
+        }
     }
 }
