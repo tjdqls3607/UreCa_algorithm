@@ -9,5 +9,19 @@ public class Test1 {
 
         stack.push(3);
         System.out.println(stack.peek());
+        System.out.println(stack.size());
+
+        stack.push(1);
+        System.out.println(stack.peek());
+        System.out.println(stack.size());
+
+        stack.push(7);
+        System.out.println(stack.peek());
+        System.out.println(stack.size());
+
+        Integer num = stack.pop();
+        System.out.println(num);
+        System.out.println(stack.peek());
+        System.out.println(stack.size());
     }
 }
