@@ -1,7 +1,9 @@
+package baekjoon;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main {
+public class subset {
     static int n;
     static int[] S, B;
     static int minDiff = Integer.MAX_VALUE;
