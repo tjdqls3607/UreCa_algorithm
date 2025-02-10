@@ -7,7 +7,7 @@ import java.util.Deque;
 public class Solution_올바른괄호2 {
 
     public static void main(String[] args) {
-        String s = "XXXX";
+        String s = "()()";
         System.out.println( new Solution_올바른괄호2().solution(s) );
     }
     boolean solution(String s) {
