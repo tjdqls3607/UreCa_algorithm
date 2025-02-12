@@ -32,10 +32,12 @@ public class BasicSubsetBitMask {
     }
     // 부분집합이 완성되면 select 배열을 기준으로 src 의 선택된 수 출력
     static void printSubset(int mask) {
+        System.out.println();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < src.length; i++) {
             if ((mask & 1 << i) != 0) sb.append(src[i]).append(" ");
         }
+        sb.append("->" + mask + " [" + Integer.toBinaryString(mask) +"]\n");
         System.out.println(sb);
     }
 }
