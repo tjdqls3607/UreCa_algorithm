@@ -25,6 +25,24 @@ public class Bj_z_10742 {
         System.out.println(ans);
     }
     static void z(int y, int x) {
+        // 기저조건
+        if (N == 1) return;
+
+        N /= 2;
+
+        // r,c 가 4개의 영역중 어디에 있는지 판단
+        if (r < y + N && c < x +N) {    // 상좌
+            z(y , x);
+        }else if (r < y + N && c >= x + N) {    //상우
+            ans += N * N * 1;
+           z (y, x + N); // 원점 우로 이동
+        }else if (r >= y + N && c < x + N) {    // 하좌
+            ans += N * N * 2;
+            z(y + N, x);// 원점 하로 이동
+        }else {
+            ans += N * N * 3;
+            z( y + N, x + N);
+        }
 
     }
 }
