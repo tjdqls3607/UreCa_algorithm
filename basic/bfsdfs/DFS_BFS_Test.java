@@ -1,5 +1,8 @@
 package basic.bfsdfs;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 // 2차원 배열 상하좌우 탐생을 통한 dfs, bfs
 // 한번 방문한 좌표는 다시 방문하지X
 public class DFS_BFS_Test {
@@ -22,10 +25,9 @@ public class DFS_BFS_Test {
 
     public static void main(String[] args) {
         visit = new boolean[7][7];  // 0 dummy visit 초기화
-        dfs(3, 3);
+//        dfs(3, 3);
 
-
-        // bfs(3, 3);
+        bfs(3, 3);  // Queue 자료구조 필요함
 
 
     }
@@ -43,6 +45,45 @@ public class DFS_BFS_Test {
                 continue;
 
             dfs(ny, nx);
+        }
+    }
+
+    static void bfs(int y, int x) {
+        // 시작 Node를 queue 에 넣고 출발
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(new Node(y,x));
+        visit[y][x] = true;
+
+        while (!queue.isEmpty()) {
+            Node node = queue.poll();
+
+            // 해당 좌표에서 할 일 진행
+            System.out.println(node);
+
+            // 꺼낸 Node 객체로부터 갈 수 있는
+            for (int d = 0; d < 4; d++) {
+                int ny = node.y + dy[d];
+                int nx = node.x + dx[d];
+
+                if (ny < 1 || nx < 1 || ny >= 7 || nx >= 7 || visit[ny][nx])
+                    continue;
+
+                queue.offer(new Node(ny,nx));
+                visit[ny][nx] = true;
+            }
+        }
+    }
+
+    static class Node {
+        int y, x;
+        Node (int y, int x) {
+            this.y = y;
+            this.x = x;
+        }
+
+        @Override
+        public String toString() {
+            return "Node [y=" + y + ", x=" + x + "]";
         }
     }
 }
