@@ -1,5 +1,6 @@
 package basic.bfsdfs;
 
+import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -48,7 +49,21 @@ public class DFS_BFS_Graph_Test1 {
             dfs(i);
         }
     }
-    static void bfs(int v) {
-        Queue<Integer> q = new LinkedList<>();
+    static void bfs(int sv) {
+        // 시작 Node 를  queue 에 넣고 출발
+        Queue<Integer> q = new ArrayDeque<>();
+        q.offer(sv);
+        visit[sv] = true;
+
+        while (!q.isEmpty()) {
+            int v = q.poll();
+            System.out.print(v + " -> ");
+
+            for (int i = 1; i <= 4; i++) {
+                if ( ! matrix[v][i] || visit[i]) continue;  // 갈 수 없거나, 이미 방문한 정점 제외
+                q.offer(i);
+                visit[i] = true;
+            }
+        }
     }
 }
