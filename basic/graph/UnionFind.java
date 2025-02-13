@@ -25,8 +25,30 @@ public class UnionFind {
 
     static void makeSet() {     // 각 원소들을 각자 서로다른 집합으로 만든다 ( 모든 원소들이 대표원소가 됨 )
         for (int i = 1; i <= v; i++) {
-            parent[i] = i;  // 모두가 대표 원소가 됨
+            parent[i] = i;  // 모두가 대표 원소
         }
+    }
+
+    // 전달된 x 원소의 대표원소 찾아서 return
+//    static int findSet(int x) {
+//        if (parent[x] == x) return x; // 대표원소이면 x 리턴
+//        return findSet(parent[x]);
+//    }
+    // Path Compression
+    static int findSet(int x) {
+        if (parent[x] == x) return x; // 대표원소이면 x 리턴
+        return parent[x] = findSet(parent[x]);  // 맨 꼭대기 대표원소의 index 값이 리턴되어
+        // 돌아오는데 이 중간 과정의 x 의 부모 parent[x] 에 넣는다.
+    }
+
+    // 전달된 두 원소 x, y에 대해, x가 속한 집합과 y가 속한 집합을 하나의 집합으로 합친다.
+    static void union(int x, int y) {
+        int px = findSet(x);
+        int py = findSet(y);
+        // px == py 이면 이미 같은 집합
+        // 그렇지 않은 경우 규칙부여할 수 있다. 아래 코드는 작은 값을 부모로.
+        if (px < py) parent[py] = px;
+        else parent[px] = py;
     }
 }
 // 트리 : 노드 (Node), 간선 (Edge)
