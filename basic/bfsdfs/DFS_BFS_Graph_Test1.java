@@ -37,7 +37,7 @@ public class DFS_BFS_Graph_Test1 {
         // visit 초기화
         visit = new boolean[5]; // 0 dummy
 
-//		dfs(1);  // 사직 정점 1
+//		dfs(1);  // 시작 정점 1
 
         bfs(1);
     }
