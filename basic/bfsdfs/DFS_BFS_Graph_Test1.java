@@ -7,10 +7,7 @@ import java.util.Queue;
 // 그래프 자료구조 중 인접 행렬
 // 재방문 X <- visit
 // 가중치 X, 유향 = > 자료구조 활용, 방문 순서 집중!!
-/*
 
-
- */
 public class DFS_BFS_Graph_Test1 {
 
     static boolean[][] matrix;
