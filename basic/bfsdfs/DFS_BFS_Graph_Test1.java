@@ -1,8 +1,6 @@
 package basic.bfsdfs;
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 // 그래프 자료구조 중 인접 행렬
 // 재방문 X <- visit
@@ -10,22 +8,27 @@ import java.util.Queue;
 
 public class DFS_BFS_Graph_Test1 {
 
-    static boolean[][] matrix;
+    static List<List<Integer>> adjList = new ArrayList<>();
     static boolean[] visit;   // 정점에 대해서 관리
     public static void main(String[] args) {
         // 정점 1, 2, 3, 4 와 연결 간선을 직접 처리
-        matrix = new boolean[5][5]; // 0 dummy
+        // 정점의 개수만큼 ArrayList 객체를 adjList 에 추가
+        // 정점번호의 dummy 가 있을 경우 dummy 를 위한 ArrayList 도 같이 추가
+        for (int i = 0; i < adjList.size(); i++) {
+            adjList.add(new ArrayList<Integer>());  // 0 번째는 dummy
+        }
         // 간선
         // 1 -> 2, 4
         // 2 -> 3, 4
         // 3 -> 2
         // 4 -> 3
-        matrix[1][2] = true;
-        matrix[1][4] = true;
-        matrix[2][3] = true;
-        matrix[2][4] = true;
-        matrix[3][2] = true;
-        matrix[4][3] = true;
+//      adjList.get(1);   <= 1 번 정점을 위한 ArrayList 객체 획득
+        adjList.get(1).add(2);
+        adjList.get(1).add(4);
+        adjList.get(2).add(3);
+        adjList.get(2).add(4);
+        adjList.get(3).add(2);
+        adjList.get(4).add(3);
 
         // visit 초기화
         visit = new boolean[5]; // 0 dummy
@@ -41,8 +44,9 @@ public class DFS_BFS_Graph_Test1 {
         System.out.print(v + " -> ");
 
         // dfs() 이어 갈 수 있는 다음 정점 방문
-        for (int i = 1; i <= 4; i++) {
-            if ( ! matrix[v][i] || visit[i]) continue;  // 갈 수 없거나, 이미 방문한 정점 제외
+        List<Integer> list = adjList.get(v);
+        for (Integer i : list) {
+            if (visit[i]) continue;  // 갈 수 없거나, 이미 방문한 정점 제외
             dfs(i);
         }
     }
@@ -53,11 +57,13 @@ public class DFS_BFS_Graph_Test1 {
         visit[sv] = true;
 
         while (!q.isEmpty()) {
+
             int v = q.poll();
             System.out.print(v + " -> ");
 
-            for (int i = 1; i <= 4; i++) {
-                if ( ! matrix[v][i] || visit[i]) continue;  // 갈 수 없거나, 이미 방문한 정점 제외
+            List<Integer> list = adjList.get(v);
+            for (Integer i : list) {
+                if (visit[i]) continue;  // 갈 수 없거나, 이미 방문한 정점 제외
                 q.offer(i);
                 visit[i] = true;
             }
