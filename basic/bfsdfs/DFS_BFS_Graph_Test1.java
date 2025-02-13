@@ -1,0 +1,54 @@
+package basic.bfsdfs;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+// 그래프 자료구조 중 인접 행렬
+// 재방문 X <- visit
+// 가중치 X, 유향 = > 자료구조 활용, 방문 순서 집중!!
+/*
+
+
+ */
+public class DFS_BFS_Graph_Test1 {
+
+    static boolean[][] matrix;
+    static boolean[] visit;   // 정점에 대해서 관리
+    public static void main(String[] args) {
+        // 정점 1, 2, 3, 4 와 연결 간선을 직접 처리
+        matrix = new boolean[5][5]; // 0 dummy
+        // 간선
+        // 1 -> 2, 4
+        // 2 -> 3, 4
+        // 3 -> 2
+        // 4 -> 3
+        matrix[1][2] = true;
+        matrix[1][4] = true;
+        matrix[2][3] = true;
+        matrix[2][4] = true;
+        matrix[3][2] = true;
+        matrix[4][3] = true;
+
+        // visit 초기화
+        visit = new boolean[5]; // 0 dummy
+
+//        dfs(1); // 시작 정점 1
+
+        bfs(1);
+    }
+
+    static void dfs(int v) {
+        // 해당 정점에서 할 일 진행
+        visit[v] = true;
+        System.out.print(v + " -> ");
+
+        // dfs() 이어 갈 수 있는 다음 정점 방문
+        for (int i = 1; i <= 4; i++) {
+            if ( ! matrix[v][i] || visit[i]) continue;  // 갈 수 없거나, 이미 방문한 정점 제외
+            dfs(i);
+        }
+    }
+    static void bfs(int v) {
+        Queue<Integer> q = new LinkedList<>();
+    }
+}
