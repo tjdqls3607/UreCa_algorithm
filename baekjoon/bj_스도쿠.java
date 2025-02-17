@@ -10,7 +10,7 @@ import java.util.List;
 //   다음 0 인 좌표에 위 작업을 반복
 //   zero 의 모든 좌표에 수를 다 놓으면 종료
 // visit 대신 BitMask 사용
-public class BJ_스도쿠_2239_2 {
+public class bj_스도쿠 {
     static int[][] map = new int[9][9];
     static List<Node> zero = new ArrayList<>();
     static int size; // zero 의 size
