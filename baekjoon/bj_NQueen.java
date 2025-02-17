@@ -15,6 +15,7 @@ public class bj_NQueen {
         N = new int[a];  // 입력받은 a를 N 배열의 크기로
 
         nQueen(0);
+        System.out.println(count);
 
     }
     static void nQueen(int depth) {
