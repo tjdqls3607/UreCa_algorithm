@@ -39,7 +39,7 @@ public class bj_NQueen {
             // 해당 열의 행과 i행이 일치할 경우( 같은 행에 존재할 경우)
             if (N[col] == N[i]) { // 같은 열에 퀸이 있으면 안 됨
                 return false;
-            } else if (Math.abs(col-1) == Math.abs(N[col] - N[i])) {
+            } else if (Math.abs(col-i) == Math.abs(N[col] - N[i])) {
                 return false;
             }
         }
