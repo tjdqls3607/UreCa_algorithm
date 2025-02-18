@@ -96,8 +96,38 @@ public class bj_아기상어2 {
                         }
                     }
                 }
+            }   // if
+
+            // 가지치기
+            if (d + 1 >= minDis) continue;
+
+            //4방탐색
+            for (int i = 0; i < dx.length; i++) {
+                int ny = y + dy[i];
+                int nx = x + dx[i];
+
+                // range, visit, size 체크
+                if (ny < 0 || ny >= N || nx < 0 || nx >= N || map[ny][nx] > sSize) continue;
+
+                visit[ny][nx] = true;
+                q.offer(new Node(ny, nx, node.d + 1));
+            }// for
+        } // while
+        // 물고기를 먹는 작업 성공/ 실패
+        if(minDis == Integer.MAX_VALUE) return 0;
+        else { // 물고기를 찾아 먹은 경우 후처리
+            sEatCnt++;
+            if(sEatCnt == sSize) {
+                sSize++;
+                sEatCnt = 0;
             }
+            map[minY][minX] = 0;    // 먹은 물고기 자리
+            map[sy][sx] = 0; // 상어가 출발한 자리
+
+            sy = minY;
+            sx = minX;
         }
+        return minDis;
     }
 
     static class Node {
