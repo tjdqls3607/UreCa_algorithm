@@ -54,7 +54,50 @@ public class bj_아기상어2 {
     // 성공 : 이동한 거리(시간)
     // 실패 : 0 리턴
     static int bfs() {
-        return 1;
+        // 먹이 후보
+        int minDis = Integer.MAX_VALUE; // 비교해서 작은값을 가져갈거라서
+        // bfs() 과정에서 먹을 수 있는 물고기를 찾으면 갱신
+        int minY = Integer.MAX_VALUE;
+        int minX = Integer.MAX_VALUE;
+
+        // visit 초기화
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                visit[i][j] = false;
+            }
+        }
+
+        // 현재 아기상어의 위치에서부터 시작
+        visit[sy][sx] = true;
+        q.offer(new Node(sy, sx, 0));
+
+        while (!q.isEmpty()) {
+            Node node = q.poll();
+            int y = node.y;
+            int x = node.x;
+            int d = node.d; // 상어 위치부터 탐색해 온 거리
+
+            // 먹을 수 있는 물고기를 만나면
+            if (map[y][x] < sSize && map[y][x] != 0) {
+                if (d < minDis) {   // 거리가 더 작은
+                    minDis = d;
+                    minY = y;
+                    minX = x;
+                } else if (d == minDis) {   // 거리가 같으면
+                    if(y < minY) {
+                        minY = y;
+                        minX = x;
+                        minDis = d;
+                    }else if(y == minY) {
+                        if(x < minX) {
+                            minX = x;
+                            minDis = d;
+                            minY = y;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     static class Node {
