@@ -19,7 +19,7 @@ public class bj_게리맨더링 {
     static boolean[] select; // 부분집합 처리용도
     static boolean[] visit; // 모든 구역이 연결되어 있는 지 확인 용도
 
-    static Queue<Integer> queue = new ArrayDeque<>(); // bfs
+//    static Queue<Integer> queue = new ArrayDeque<>(); // bfs
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -69,59 +69,82 @@ public class bj_게리맨더링 {
 
     }
 
+    // v 정점에서 갈 수 있는 다른 정점 방문 visit에 기록
+    static void dfs(int v, boolean sel) {
+        visit[v] = true;
+
+        for (int i = 1; i <= N; i++) {
+            int adj = matrix[v][i];
+            if (adj == 0 || visit[adj] || select[adj] != sel ) continue;
+
+            dfs(adj, sel);
+        }
+    }
+
+
     // 나뉘어진 2개 선거구가 유효한지 ( 적어도 1개이상 , 다 연결)
     // 유효하다면 두 선거구의 인구수를 계산, 차이의 최소값 처리
     static void check() {
         // visit 배열을 이용해서 연결여부 확인
         Arrays.fill(visit, false);
 
-        queue.clear();
+    //    queue.clear();
 
         // A 선거구 ( select 배열 true 인 구역
         // 선거구에 속한 구역 1개를 선택 완탐 진행 => 갈 수 있는 곳에 visit 기록
+        int a = -1;
         for (int i = 1; i <= N; i++) {
             if (select[i]) {
-                visit[i] = true;
-                queue.offer(i);
+//                visit[i] = true;
+//                queue.offer(i);
+                a = i;
                 break;
             }
         }
 
-        if (queue.size() == 0) return; // A 한쪽 선거구의 구역이 0 (유효하지 않음)
+//        if (queue.size() == 0) return; // A 한쪽 선거구의 구역이 0 (유효하지 않음)
+        if (a == -1) return;
 
-        while (!queue.isEmpty()) {
-            int v = queue.poll();
+//        while (!queue.isEmpty()) {
+//            int v = queue.poll();
+//
+//            for (int i = 1; i<= N; i++) {
+//                int adj = matrix[v][i];
+//                if (adj == 0 || visit[adj] || ! select[adj] ) continue; // !select[adj] <- B구역
+//                visit[adj] = true;
+//                queue.offer(adj);
+//            }
+//        }
 
-            for (int i = 1; i<= N; i++) {
-                int adj = matrix[v][i];
-                if (adj == 0 || visit[adj] || ! select[adj] ) continue; // !select[adj] <- B구역
-                visit[adj] = true;
-                queue.offer(adj);
-            }
-        }
+        dfs(a, true);
 
         // B 선거구 ( select 배열 false 인 구역 )
         // 선거구에 속한 구역 1개를 선택 완탐 진행 => 갈 수 있는 곳에 visit 기록
+        int b = -1;
         for (int i = 1; i <= N; i++) {
             if (! select[i]) {
-                visit[i] = true;
-                queue.offer(i);
+//                visit[i] = true;
+//                queue.offer(i);
+                b = i;
                 break;
             }
         }
 
-        if (queue.size() == 0) return; // A 선거구의 구역이 0 (유효하지 않음)
+//        if (queue.size() == 0) return; // A 한쪽 선거구의 구역이 0 (유효하지 않음)
+        if (b == -1) return;
 
-        while (!queue.isEmpty()) {
-            int v = queue.poll();
+//        while (!queue.isEmpty()) {
+//            int v = queue.poll();
+//
+//            for (int i = 1; i<= N; i++) {
+//                int adj = matrix[v][i];
+//                if (adj == 0 || visit[adj] || ! select[adj] ) continue; // !select[adj] <- B구역
+//                visit[adj] = true;
+//                queue.offer(adj);
+//            }
+//        }
 
-            for (int i = 1; i<= N; i++) {
-                int adj = matrix[v][i];
-                if (adj == 0 || visit[adj] || select[adj] ) continue; // select[adj] <- A구역
-                visit[adj] = true;
-                queue.offer(adj);
-            }
-        }
+        dfs(b, false);
 
         // 두 선거구 모두 연결 확인
         for (int i = 1; i <= N; i++) {
