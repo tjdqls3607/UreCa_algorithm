@@ -13,6 +13,7 @@ import java.util.*;
 // 모두 연결되어 있다면 인구수의 차를 계산, min 처리
 
 // bfs
+// Bit Masking 과 Binary Counting 으로 구현 시도
 public class bj_게리맨더링 {
     static int N, min;   // 첫째줄 : 구역의 수
     static int[][] matrix;  // i,j 정점번호는 아니다.
