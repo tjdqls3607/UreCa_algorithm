@@ -1,0 +1,17 @@
+1. 시간 복잡도 표현
+
+2. 순열, 조합, 부분집합 결과
+
+3. nPr, nCr !(팩토리얼) 이용한 계산법
+
+4. dfs, bfs 구분
+
+5. 서로소 연산 unionfindSet 이해
+
+6. ArrayList, LinkedList, HashSet, HashMap 구분
+
+7. stack, Queue, PriorityQueue 구분
+
+8. 그래프 입력에 대응하는 자료구조 이해 (인접행렬, 인접리스트, 간선리스트)
+
+9. 정렬에 필요한 인터페이스
