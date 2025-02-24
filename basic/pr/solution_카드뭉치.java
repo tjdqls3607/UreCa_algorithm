@@ -1,4 +1,4 @@
-package pr;
+package basic.pr;
 
 import java.util.LinkedList;
 import java.util.Queue;
