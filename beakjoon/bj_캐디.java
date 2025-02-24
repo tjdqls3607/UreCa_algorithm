@@ -3,7 +3,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 // 조합 + 시물레이션
 // 궁사의 x 위치를 3개 조합으로 뽑고
@@ -11,13 +10,12 @@ import java.util.StringTokenizer;
 // 자료구조
 //    2차원 배열에 적을 두고 이동...부담..
 //    적을 ArrayList 에 담고 제거...이동...
-// 가장 가까운 거리 처리하는 우선순위 큐 대신 직접 찾는 코드
-public class bj_캐슬디펜스{
+// 가장 가까운 거리 처리하는 PriorityQueue 대신 직접 찾는 코드
+public class bj_캐디 {
     static int N, M, D, max;
     static int[] archer = new int[3]; // 조합의 tgt 에 해당
     static List<Enemy> enemyCopy = new ArrayList<>();  // 복사원본
     static List<Enemy> enemy = new ArrayList<>();  // 작업본
-    static PriorityQueue<Enemy> pqueue = new PriorityQueue<>( (e1, e2) -> e1.d == e2.d ? e1.x - e2.x : e1.d - e2.d); // 가장 가까운 거리의 Enemy 찾는 용도
 
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -54,23 +52,35 @@ public class bj_캐슬디펜스{
             // 3명의 궁사가 한 번씩 D 거리안의 적에게 화살 쏜다.
             for (int i = 0; i < 3; i++) {
                 // 가장 가까운 거리의 적 계산
-                pqueue.clear();
                 int ac = archer[i]; // 현재 궁사의 x 좌표
                 int size = enemy.size();
 
-                // 모든 적들 중에 현재 궁사와의 거리가 D 이하인 적만 pqueue 에 담는다.
+                int minD = Integer.MAX_VALUE;
+                int minX = Integer.MAX_VALUE;
+                int minIdx = -1;
+
+                // 모든 적들 중에 현재 궁사와의 거리가 D 이하인 적을 찾는다.
                 for (int j = 0; j < size; j++) {
                     Enemy e = enemy.get(j);
                     // 현재 궁사의 위치와 꺼낸 e 적의 위치에서 맨하탄 거리
-                    e.d = Math.abs(ac - e.x) + Math.abs(N - e.y);
+                    int d = Math.abs(ac - e.x) + Math.abs(N - e.y);
 
-                    if( e.d > D ) continue; // 현재 궁사와의 거리가 유효거리인 D 밖일 경우 무시
+                    if( d > D ) continue; // 현재 궁사와의 거리가 유효거리인 D 밖일 경우 무시
 
-                    pqueue.offer(e);
+                    if( minD == d ) {
+                        if( minX > e.x ) {
+                            minX = e.x;
+                            minIdx = j;
+                        }
+                    }else if( minD > d ) {
+                        minD = d;
+                        minX = e.x;
+                        minIdx = j;
+                    }
                 }
                 // pqueue 가 empty 하지 않으면 적 1개를 꺼내고 죽었다 표시
-                if( ! pqueue.isEmpty() ) {
-                    pqueue.poll().dead = true;
+                if( minIdx != -1 ) {
+                    enemy.get(minIdx).dead = true;
                 }
             }
 
@@ -110,9 +120,9 @@ public class bj_캐슬디펜스{
         comb(srcIdx + 1, tgtIdx );// 선택 X
     }
 
-
+    // d 제거
     static class Enemy{
-        int y, x, d; // d: 현재 따지는 궁수와의 거리 <= 객체 생성 시점이 아닌 궁수의 위치가 결정되면 d 를 계산
+        int y, x;
         boolean dead;
 
         Enemy(int y, int x){
