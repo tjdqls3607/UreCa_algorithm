@@ -1,5 +1,4 @@
-package pr;
-import java.util.ArrayList;
+package basic.pr;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 

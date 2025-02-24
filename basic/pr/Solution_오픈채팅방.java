@@ -1,4 +1,4 @@
-package pr;
+package basic.pr;
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Solution_오픈채팅방 {
