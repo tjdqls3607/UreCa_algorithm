@@ -1,6 +1,5 @@
-package pr;
-import java.util.ArrayDeque;
-import java.util.Deque;
+package basic.pr;
+
 // 스택 대신 배열을 그대로 이동
 // 여는 괄호 중 맨 마지막 문자를 가리키는 index : oi
 // 문자열 (배열) 맨 앞부터 순차적으로 따져가는 index : i
