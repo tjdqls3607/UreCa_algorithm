@@ -7,6 +7,7 @@ import java.util.Arrays;
 // NP : 일부 추출X, 전체 순열만 빠르게!
 //      항상 가장 작은 수부터 출발해서 가장 큰수를 만드는 과정
 // while 포함 np() swap() 이용
+// swap permutaion 도 확인 (속도 빠르다)
 public class BasicPermNP {
 
     //기본 순열
