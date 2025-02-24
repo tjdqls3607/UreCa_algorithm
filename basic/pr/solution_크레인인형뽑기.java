@@ -1,7 +1,6 @@
-package pr;
+package basic.pr;
 
 
-import java.util.Arrays;
 import java.util.Stack;
 
 // board
