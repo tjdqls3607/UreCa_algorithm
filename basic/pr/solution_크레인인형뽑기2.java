@@ -1,9 +1,8 @@
-package pr;
+package basic.pr;
 
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Stack;
 
 // board
 /*
