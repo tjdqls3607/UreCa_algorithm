@@ -1,7 +1,4 @@
-package pr;
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Queue;
+package basic.pr;
 
 public class Solution_카드뭉치3 {
     public String solution(String[] cards1, String[] cards2, String[] goal) {
