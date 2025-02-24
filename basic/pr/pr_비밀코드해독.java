@@ -1,4 +1,4 @@
-package pr;
+package basic.pr;
 
 import java.io.BufferedReader;
 import java.io.IOException;

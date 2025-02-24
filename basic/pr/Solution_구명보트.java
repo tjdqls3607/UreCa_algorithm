@@ -1,4 +1,4 @@
-package pr;
+package basic.pr;
 import java.util.*;
 
 // 그리디
