@@ -1,6 +1,6 @@
 package basic.pr;
 
-class pr.택배상자꺼내기 {
+class 택배상자꺼내기 {
     public int solution(int n, int w, int num) {
         int answer = 0;
         while (num <= n) {
