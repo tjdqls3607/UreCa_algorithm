@@ -3,13 +3,25 @@ package basic.perm;
 
 import java.util.Arrays;
 
+
+// NP : 일부 추출X, 전체 순열만 빠르게!
+//      항상 가장 작은 수부터 출발해서 가장 큰수를 만드는 과정
+// while 포함 np() swap() 이용
 public class BasicPermNP {
 
     //기본 순열
     static int[] src = {3, 1, 5, 4, 2};
 
     public static void main(String[] args) {
-        perm(0);
+        // 가장 작은 수로 대상을 정렬
+        Arrays.sort(src);   // 순열의 경우의 수 중 하나
+
+        // 시작은 1 2 3 4 5
+        while (true) {
+            // 완성된 순열로 처리 코드
+            System.out.println(Arrays.toString(src));
+            if (! np(src)) break;   // 가장 큰 수( 5 4 3 2 1 )이면 종료 5 4 3 2 1
+        }
     }
     static boolean np(int[] array) {
         // 3
