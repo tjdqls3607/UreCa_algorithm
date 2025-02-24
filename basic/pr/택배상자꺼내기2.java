@@ -1,4 +1,4 @@
-package pr;
+package basic.pr;
 
 class 택배상자꺼내기2 {
     public int solution(int n, int w, int num) {
