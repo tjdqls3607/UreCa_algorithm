@@ -18,7 +18,7 @@ public class bj_2n타일링2 {
             return;
         }
         if (N == 2) {
-            System.out.println(2);
+            System.out.println(3);
             return;
         }
 
